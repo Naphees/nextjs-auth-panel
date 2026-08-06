@@ -40,26 +40,29 @@ export default function register(){
     }
 
     return(
-        <div className="flex justify-center aligns-center">
-            <div className="p-4 m-4 border-4">
-            <h1>Register</h1>
+        <div className="flex flex-col justify-center items-center h-screen  border rounded border-gray-300 ">
+            <div className="p-4 m-4 border-2 rounded">
+            <h1 className="text-center text-xl mb-2">Start Your Journey</h1>
              <div>
                 <p>Name </p>
-                 <input type="text" name="name" value={userForm.name} onChange={handleChange} placeholder="Enter your name..." />
+                 <input type="text" name="name" value={userForm.name} onChange={handleChange} placeholder="Enter your name..." className="p-2 border rounded border-gray-2 mb-2" />
                  <p>Password</p>
-                 <input type="password" name="password" value={userForm.password} onChange={handleChange} placeholder="Enter your password..." />
+                 <input type="password" name="password" value={userForm.password} onChange={handleChange} placeholder="Enter your password..." className="p-2 border rounded border-gray-2 mb-2" />
                  <p>Email</p>
-                 <input type="email" name="email" value={userForm.email} onChange={handleChange} placeholder="Enter your email..." />
+                 <input type="email" name="email" value={userForm.email} onChange={handleChange} placeholder="Enter your email..." className="p-2 border rounded border-gray-2 mb-2" />
              </div>
              <div>
-                <button onClick={formSumbit} className="bg-green-400 p-3 m-3"> register</button>
-                <Link href="/">Login</Link>
+                <button onClick={formSumbit} className="bg-green-400 p-2 "> register</button>
+                
              </div>
                 {
                     message&&(
                         <p className="text-red-400">{message}</p>
                     )
                 }
+                <div>
+                    <Link href="/">Have An Account ? <span className="text-blue-400">Login </span></Link>
+                </div>
 
             </div>
         </div>

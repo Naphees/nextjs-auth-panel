@@ -7,7 +7,7 @@ export async function POST(request){
         await dbConnect();
         const body = await request.json(); 
         const {name,email,password} = body;
-
+        
         // validation
         if(!name || !email || !password){
             return NextResponse.json(

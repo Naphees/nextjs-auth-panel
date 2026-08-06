@@ -4,6 +4,9 @@ import Link from "next/link";
 import axios from "axios";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+
+
+ 
 export default function Home() {
     const router = useRouter();
   // userform  state
@@ -55,12 +58,12 @@ try{
       <div>
           <div>
             {/* Email*/}
-            <p>Email : </p>
+            <p>Email  </p>
             <input type ="email" name="email" value={userForm.email} onChange={handleChange} placeholder="Enter your email..." className="p-2 border rounded border-gray-2 mb-2" />
           </div>
           <div>
             {/* Password */}
-            <p>Password : </p>
+            <p>Password  </p>
             <input type="password" name="password" value={userForm.password} onChange={handleChange} placeholder="Enter your password..." className="p-2 border rounded border-gray-2 mb-2" />
 
           </div>
