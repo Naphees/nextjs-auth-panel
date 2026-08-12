@@ -1,5 +1,26 @@
+"use client";
+import axios from "axios";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 export default function Navbar(){
+
+    const router = useRouter();
+    async function handleLogout(){
+        try{
+                const res = await axios({
+                    url:"/api/logout",
+                    method:"POST"
+                });
+                console.log(res);
+                if(res.data.success){
+                    router.push(`/`);
+                    router.refresh();
+                }
+                
+        }catch(error){
+            console.log(error.message);
+        }
+    }
     return(
         <nav className="mb-32  flex justify-around">
             {/* Logo */}
@@ -18,8 +39,7 @@ export default function Navbar(){
             </ul>
             {/* Icons */}
               <div>
-                <Link href="/register">Register</Link>
-                <Link href="/">Login</Link>
+                    <button onClick={handleLogout}>Logout</button>
                 
               </div>
         </nav>
