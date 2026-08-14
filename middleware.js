@@ -7,8 +7,7 @@ export async function middleware(request) {
 
     console.log("====================");
     console.log("PATH:", pathname);
-    console.log("TOKEN:", token);
-    console.log("====================");
+   
 
     try {
         if (!token) {

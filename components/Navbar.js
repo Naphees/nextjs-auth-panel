@@ -29,10 +29,12 @@ export default function Navbar(){
             </div>
             {/* Navigation Link */}
             <ul className="flex justify-between">
-                <li>
-                    Dashboard
+                <li className="pl-8">
+                    <Link href="/dashboard">
+                             Dashboard
+                    </Link>
                 </li>
-                <li>
+                <li className="pl-8" >
                     <Link href="/profile"> Profile </Link>
                    
                 </li>
