@@ -25,7 +25,10 @@ export default function Navbar(){
         <nav className="mb-32  flex justify-around">
             {/* Logo */}
             <div>
-                User Auth
+                <Link href={"/dashboard"}>
+                          User Auth
+                </Link>
+              
             </div>
             {/* Navigation Link */}
             <ul className="flex justify-between">
