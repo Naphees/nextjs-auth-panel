@@ -36,7 +36,8 @@ export default function Profile(){
     }
 
     // Password Form Submit
-    async function userPasswordSubmit() {
+    async function userPasswordSubmit(e) {
+        e.preventDefault();
         try{
             // Default message set
             setMessage(defaultMessage);
@@ -55,8 +56,31 @@ export default function Profile(){
                     }))
                     return;
                 }
+
+                const res = await fetch("/api/resetPassword",{
+                    method:"PATCH",
+                    body:JSON.stringify(passwordForm),
+                    headers:{
+                        "Content-Type":"application/json"
+                    }
+                });
+                const data =  await res.json();
+                console.log(data);
+                if(data.success){
+                    setMessage((prev)=>({
+                        ...prev, success:data.message
+                    }));
+                }
+                if(!data.success){
+                    setMessage((prev)=>({
+                        ...prev, success:data.message
+                    }));
+                }
         }catch(error){
             console.log(error.message);
+            setMessage((prev)=>({
+                ...prev,error:`Something went wrong!`
+            }));
         }
     }
     
@@ -96,7 +120,17 @@ export default function Profile(){
                                                                 <button onClick={userPasswordSubmit} className="m-4 text-xl bg-green-300 p-2 rounded">
                                                                     Update
                                                                 </button>
+
                                                  </div>
+                                                 <div>
+                                                        {
+                                                          message.error &&<p>{message.error}</p>
+                                                          
+                                                        }
+                                                        {
+                                                            message.success&&<p>{message.success}</p>
+                                                        }
+                                                </div>
                                                 
                                     
                             </div>
