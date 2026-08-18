@@ -5,8 +5,8 @@ export async function middleware(request) {
     const pathname = request.nextUrl.pathname;
     const token = request.cookies.get("token")?.value;
 
-    console.log("====================");
-    console.log("PATH:", pathname);
+    
+    
    
 
     try {
@@ -20,7 +20,7 @@ export async function middleware(request) {
         return NextResponse.next();
 
     } catch (error) {
-        console.log("JWT Error:", error.message);
+        
 
         return NextResponse.redirect(new URL("/", request.url));
     }
@@ -33,7 +33,8 @@ export const config = {
 
             //  protect APIs
             "/api/logout/:path*",
-            "/api/profile/:path*"
+            "/api/profile/:path*",
+            "/api/resetPassword/:path*"
 
     ],
 };

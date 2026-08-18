@@ -26,6 +26,7 @@ const handleChange = (e) =>{
 // handle submit
 const handleSubmit = async(e) =>{
   e.preventDefault();
+  setMessage("");
 try{
 
   // check  input data
@@ -40,8 +41,11 @@ try{
     
       
    }
+   else if(res.status === 400  || res.status === 401){
+    setMessage("Something went wrong!");
+   }
 }catch(err){
-    console.log(`server side error 500`);
+    
     setMessage("Something went wrong!");
 }
   

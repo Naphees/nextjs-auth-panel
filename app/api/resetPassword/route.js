@@ -37,7 +37,7 @@ export async function PATCH(request){
        const user = await User.findOne({email});
 
 
-        console.log(user);
+       
         // Now, compare password
         const isMatch = await bcrypt.compare(oldPassword,user.password);
         if(!isMatch){

@@ -20,7 +20,7 @@ export default function register(){
 
     // form submit
     async function formSumbit(){
-        
+                setMessage("");
         try {
             if(!userForm.name || !userForm.email || !userForm.password){
                 setMessage("All fields are required !")
@@ -32,10 +32,19 @@ export default function register(){
                 data:userForm
             });
            if(res.status === 201) {
+            setUserForm({
+                name:"",
+                password:"",
+                email:""
+            });
             setMessage('register successfully!');
            }
+           else if(res.status === 400 || res.status === 409){
+            setMessage(`Something went wrong!`);
+           }
         } catch (error) {
-             console.log(error) ;
+            
+             setMessage("Something went wrong!");
         }
     }
 
