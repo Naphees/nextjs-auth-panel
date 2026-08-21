@@ -22,10 +22,25 @@ export default function register(){
     async function formSumbit(){
                 setMessage("");
         try {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
             if(!userForm.name || !userForm.email || !userForm.password){
                 setMessage("All fields are required !")
                 return;
             }
+            // email structure validation
+            if(!emailRegex.test(userForm.email)){
+                setMessage("Please enter a valid email address");
+                return;
+
+            }
+
+            // password validation
+            if(!passwordRegex.test(userForm.password)){
+                setMessage("Password must be at least 8 characters and contain uppercas,lowercase, number and special character.");
+                return;
+            }
+
             const res = await axios({
                 url:`/api/register`,
                 method:`POST`,

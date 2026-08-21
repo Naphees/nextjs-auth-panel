@@ -40,7 +40,7 @@ const user = await User.create({
     email,
     password : hashedPassword,
 });
- console.log(user);
+
 return NextResponse.json({
     success:true,
     message:"User registered successfully",
